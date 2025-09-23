@@ -36,6 +36,8 @@ export const weddingData = {
     key: "43991750274",
     name: "Adrian Philipe Campana de Souza",
     bank: "Nubank",
+    qrCode:
+      "https://nubank.com.br/cobrar/194knk/68d2a473-3744-431d-ab2a-26e464bd6922",
   },
 
   messages: {

@@ -1,10 +1,21 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Menubar } from "primereact/menubar";
 import weddingData from "../data/mockData";
 import "./Header.css";
 
 const Header = () => {
   const { couple } = weddingData;
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const items = [
     {
@@ -45,7 +56,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className="wedding-header"
+      className={`wedding-header ${isScrolled ? 'scrolled' : ''}`}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}

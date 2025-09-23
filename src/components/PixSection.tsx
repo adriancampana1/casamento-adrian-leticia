@@ -96,7 +96,7 @@ const PixSection = () => {
                 >
                   <div className="qr-code">
                     <QRCode
-                      value={pixInfo.key}
+                      value={pixInfo.qrCode}
                       size={200}
                       style={{
                         height: "auto",
