@@ -1,0 +1,87 @@
+.wedding-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 0, 255, 0.08);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-subtle);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.header-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.wedding-menubar {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.wedding-menubar .p-menubar-root-list {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.wedding-menubar .p-menuitem-link {
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: var(--transition-normal);
+  background: transparent !important;
+  border: none !important;
+}
+
+.wedding-menubar .p-menuitem-link:hover {
+  color: var(--primary-color);
+  background: rgba(255, 0, 255, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.wedding-menubar .p-menuitem-icon {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .wedding-menubar .p-menubar-root-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .wedding-menubar .p-menuitem-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}

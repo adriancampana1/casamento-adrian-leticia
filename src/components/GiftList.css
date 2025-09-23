@@ -1,0 +1,189 @@
+.gifts-section {
+  padding: 6rem 0;
+  background: var(--background);
+  position: relative;
+}
+
+.gifts-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.gifts-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.gifts-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-family: "Georgia", serif;
+}
+
+.gifts-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.gift-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(217, 70, 239, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all var(--transition-normal) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(10px) !important;
+  height: 100%;
+}
+
+.gift-card:hover {
+  box-shadow: var(--shadow-lg) !important;
+  border-color: rgba(255, 0, 255, 0.2) !important;
+  transform: translateY(-5px) !important;
+}
+
+.gift-card-content {
+  padding: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gift-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift-store-name {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.gift-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.gift-button {
+  padding: 1rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  border-radius: 50px !important;
+  transition: all var(--transition-normal) !important;
+  width: 100%;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.gift-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.gifts-note {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.gifts-note p {
+  background: rgba(255, 0, 255, 0.06);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 0;
+  border: 1px solid rgba(255, 0, 255, 0.12);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gifts-section {
+    padding: 4rem 0;
+  }
+
+  .gifts-container {
+    padding: 0 1rem;
+  }
+
+  .gifts-title {
+    font-size: 2.5rem;
+  }
+
+  .gifts-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .gifts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .gift-card-content {
+    padding: 2rem;
+  }
+
+  .gift-icon {
+    font-size: 3rem;
+  }
+
+  .gift-store-name {
+    font-size: 1.6rem;
+  }
+
+  .gifts-note p {
+    padding: 1.25rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gifts-title {
+    font-size: 2rem;
+  }
+
+  .gift-card-content {
+    padding: 1.5rem;
+  }
+
+  .gift-icon {
+    font-size: 2.5rem;
+  }
+
+  .gift-store-name {
+    font-size: 1.4rem;
+  }
+
+  .gift-description {
+    font-size: 0.95rem;
+  }
+
+  .gifts-note p {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+}

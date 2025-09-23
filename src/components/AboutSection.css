@@ -1,0 +1,353 @@
+.about-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #fefefe 50%, #fdf4ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d946ef' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+    repeat;
+  pointer-events: none;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-content {
+  text-align: center;
+}
+
+.about-header {
+  margin-bottom: 4rem;
+}
+
+.about-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-family: "Georgia", serif;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.about-story {
+  margin-bottom: 4rem;
+}
+
+.story-text {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.story-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.about-couple {
+  margin-bottom: 4rem;
+}
+
+.couple-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  min-height: 100px; /* Garante espaço suficiente */
+}
+
+.couple-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2; /* Garante que fique acima do connector */
+}
+
+.name-initial {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-primary);
+}
+
+.name-text {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.couple-connector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--primary-color);
+}
+
+.connector-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gradient-primary);
+}
+
+.connector-heart {
+  font-size: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.about-date-info {
+  display: flex;
+  justify-content: center;
+}
+
+.date-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(217, 70, 239, 0.2);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.date-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.date-value {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .about-container {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  .story-text {
+    max-width: 600px;
+  }
+
+  .story-text p {
+    font-size: 1.05rem;
+  }
+
+  .name-initial {
+    width: 75px;
+    height: 75px;
+    font-size: 1.8rem;
+  }
+
+  .name-text {
+    font-size: 1.4rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 0;
+  }
+
+  .about-container {
+    padding: 0 1rem;
+  }
+
+  .about-header {
+    margin-bottom: 3rem;
+  }
+
+  .about-story {
+    margin-bottom: 3rem;
+  }
+
+  .story-text p {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .couple-names {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .couple-connector {
+    order: 2;
+    transform: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .connector-line {
+    width: 2px;
+    height: 20px;
+    background: var(--gradient-primary);
+  }
+
+  .connector-heart {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .couple-name.bride {
+    order: 1;
+  }
+
+  .couple-name.groom {
+    order: 3;
+  }
+
+  .name-initial {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+
+  .name-text {
+    font-size: 1.4rem;
+  }
+
+  .date-card {
+    padding: 1.5rem 2rem;
+  }
+
+  .date-value {
+    font-size: 1.5rem;
+  }
+
+  .about-couple {
+    margin-bottom: 3rem;
+  }
+
+  .story-text p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 3rem 0;
+  }
+
+  .about-container {
+    padding: 0 1rem;
+  }
+
+  .about-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-story {
+    margin-bottom: 2.5rem;
+  }
+
+  .story-text p {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .connector-line {
+    height: 15px;
+  }
+
+  .connector-heart {
+    font-size: 1rem;
+  }
+
+  .name-initial {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .name-text {
+    font-size: 1.2rem;
+  }
+
+  .date-card {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .date-value {
+    font-size: 1.3rem;
+  }
+
+  .about-couple {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .about-container {
+    padding: 0 0.75rem;
+  }
+
+  .name-initial {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .name-text {
+    font-size: 1.1rem;
+  }
+
+  .date-card {
+    padding: 1rem 1.2rem;
+  }
+
+  .date-value {
+    font-size: 1.2rem;
+  }
+}
