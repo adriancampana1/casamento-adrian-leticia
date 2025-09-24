@@ -1,0 +1,202 @@
+/* ====================================
+   MOBILE FIXES - Eliminar scroll fantasma e barra fúcsia
+   ================================== */
+
+/* Reset fundamental para mobile */
+html {
+  /* Impedir overflow horizontal em qualquer situação */
+  overflow-x: hidden !important;
+  /* Usar altura dinâmica do viewport no mobile */
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  /* Impedir overflow horizontal */
+  overflow-x: hidden !important;
+  /* Garantir que o body não ultrapasse 100% da largura */
+  max-width: 100vw !important;
+  /* Prevenir scroll horizontal */
+  width: 100%;
+  /* Usar altura dinâmica */
+  min-height: 100%;
+  /* Reset de margens/padding */
+  margin: 0;
+  padding: 0;
+  /* Posicionamento relativo para contexto */
+  position: relative;
+}
+
+/* Container principal da aplicação */
+.app {
+  /* Usar altura dinâmica do viewport ao invés de 100vh */
+  min-height: 100dvh; /* dvh = dynamic viewport height */
+  min-height: -webkit-fill-available; /* Safari fallback */
+  /* Fallback para navegadores que não suportam dvh */
+  min-height: calc(100vh - env(keyboard-inset-height, 0px));
+
+  /* Garantir que não ultrapasse a largura */
+  max-width: 100vw;
+  width: 100%;
+  overflow-x: hidden !important;
+
+  /* Posicionamento */
+  position: relative;
+}
+
+/* Correções específicas para elementos com 100vh */
+.hero-section {
+  /* Usar altura dinâmica ao invés de 100vh fixo */
+  min-height: 100dvh !important;
+  min-height: -webkit-fill-available !important;
+  /* Fallback seguro */
+  min-height: calc(100vh - 60px) !important;
+
+  /* Garantir que não cause overflow */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Estado de loading */
+.loading {
+  /* Usar altura dinâmica */
+  height: 100dvh !important;
+  height: -webkit-fill-available !important;
+  height: calc(100vh - 60px) !important;
+
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+/* Correções para elementos que podem sair da tela */
+* {
+  /* Garantir que box-shadows não causem overflow */
+  box-sizing: border-box !important;
+}
+
+/* Correções para elementos com position absolute */
+[style*="position: absolute"],
+.hero-background,
+.hero-overlay,
+*[class*="absolute"] {
+  /* Garantir que elementos absolutos não saiam da tela */
+  max-width: 100vw !important;
+  overflow: hidden !important;
+}
+
+/* Correções para transforms que podem causar overflow */
+*[style*="transform"],
+*[class*="transform"] {
+  /* Garantir que transforms não causem scroll horizontal */
+  max-width: 100% !important;
+}
+
+/* Scrollbar customizada - esconder no mobile */
+@media (max-width: 768px) {
+  /* Esconder scrollbars webkit no mobile */
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+
+  /* Scrollbar para Firefox */
+  html {
+    scrollbar-width: none !important;
+  }
+
+  body {
+    scrollbar-width: none !important;
+  }
+}
+
+/* Específico para Android Chrome */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  html,
+  body {
+    /* Forçar largura máxima */
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Remover qualquer margem/padding que possa causar overflow */
+  * {
+    max-width: 100% !important;
+  }
+
+  /* Correção específica para elementos que podem causar a barra fúcsia */
+  .p-toast,
+  .p-toast *,
+  [class*="toast"] {
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Correções específicas para viewport units problemáticos */
+@supports (height: 100dvh) {
+  .hero-section {
+    min-height: 100dvh !important;
+  }
+
+  .loading {
+    height: 100dvh !important;
+  }
+
+  .app {
+    min-height: 100dvh !important;
+  }
+}
+
+/* Fallback para navegadores sem suporte a dvh */
+@supports not (height: 100dvh) {
+  .hero-section {
+    min-height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    ) !important;
+  }
+
+  .loading {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    ) !important;
+  }
+
+  .app {
+    min-height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    ) !important;
+  }
+}
+
+/* Prevenir zoom em inputs (causa problemas de layout) */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Debug temporário - remover após testar */
+/*
+html, body {
+  border: 1px solid red !important;
+}
+
+.app {
+  border: 2px solid blue !important;
+}
+
+.hero-section {
+  border: 2px solid green !important;
+}
+*/
