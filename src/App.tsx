@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import "./App.css";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
+import PhotoGallery from "./components/PhotoGallery";
 import LocationSection from "./components/LocationSection";
 import GiftList from "./components/GiftList";
 import PixSection from "./components/PixSection";
@@ -17,9 +18,10 @@ function App() {
     >
       <Hero />
       <AboutSection />
+      <LocationSection />
+      <PhotoGallery />
       <GiftList />
       <PixSection />
-      <LocationSection />
       <Footer />
     </motion.div>
   );

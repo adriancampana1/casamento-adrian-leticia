@@ -8,7 +8,6 @@ const LocationSection = () => {
   const { venue, messages } = weddingData;
 
   const openMaps = () => {
-    // Substitua pelas coordenadas reais do local
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       venue.address
     )}`;
@@ -16,7 +15,6 @@ const LocationSection = () => {
   };
 
   const openWaze = () => {
-    // Substitua pelas coordenadas reais do local
     const wazeUrl = `https://waze.com/ul?q=${encodeURIComponent(
       venue.address
     )}&navigate=yes`;
@@ -67,6 +65,26 @@ const LocationSection = () => {
                 </div>
               </div>
 
+              {/* Google Maps Embed */}
+              <div className="location-map">
+                <iframe
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(
+                    venue.address
+                  )}`}
+                  width="100%"
+                  height="300"
+                  style={{
+                    border: 0,
+                    borderRadius: "12px",
+                    marginTop: "1.5rem",
+                  }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Localização do evento"
+                ></iframe>
+              </div>
+
               <div className="location-actions">
                 <Button
                   label="Abrir no Google Maps"
@@ -81,12 +99,6 @@ const LocationSection = () => {
                   onClick={openWaze}
                 />
               </div>
-
-              {venue.observations && (
-                <div className="venue-observations">
-                  <p>{venue.observations}</p>
-                </div>
-              )}
             </div>
           </Card>
         </motion.div>

@@ -43,16 +43,9 @@ const AboutSection = () => {
               </p>
 
               <p>
-                Nossa história começou com um encontro casual que se transformou
-                em algo muito especial. Desde então, cada dia ao lado um do
-                outro tem sido uma aventura única, repleta de risadas,
-                cumplicidade e muito amor.
-              </p>
-
-              <p>
-                Agora, queremos que você faça parte deste momento tão importante
-                em nossas vidas. Sua presença tornará nosso dia ainda mais
-                especial e marcante.
+                Queremos que você faça parte deste momento tão importante em
+                nossas vidas. Sua presença tornará nosso dia ainda mais especial
+                e marcante.
               </p>
             </div>
           </motion.div>

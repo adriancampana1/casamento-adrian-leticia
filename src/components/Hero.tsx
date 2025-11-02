@@ -98,14 +98,15 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.6 }}
           >
             <Button
-              label="Ver Local"
+              label="Ver Local e Horário"
               icon="pi pi-map-marker"
-              className="hero-button secondary"
+              className="hero-button primary"
               onClick={scrollToLocation}
             />
             <Button
-              label={messages.hero.buttonText}
-              className="hero-button primary"
+              label="Lista de Presentes"
+              icon="pi pi-gift"
+              className="hero-button secondary"
               onClick={scrollToGifts}
             />
           </motion.div>

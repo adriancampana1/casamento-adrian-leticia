@@ -1,13 +1,54 @@
 .location-section {
   padding: 6rem 0;
-  background: var(--surface-light);
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 250, 251, 0.95) 0%,
+    rgba(249, 250, 251, 0.85) 100%
+  );
+}
+
+.location-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/DSC02194.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.location-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  backdrop-filter: blur(0.5px);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .location-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .location-header {
@@ -99,11 +140,18 @@
   font-size: 1rem;
 }
 
+.location-map {
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 .location-actions {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
 }
 
 .location-button {
@@ -117,6 +165,10 @@
   border: none !important;
 }
 
+.calendar-button {
+  background: linear-gradient(135deg, #e91e63, #f06292) !important;
+}
+
 .maps-button {
   background: linear-gradient(135deg, #4285f4, #5a9cfc) !important;
 }
@@ -128,23 +180,6 @@
 .location-button:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-}
-
-.venue-observations {
-  border-top: 1px solid rgba(219, 112, 147, 0.1);
-  padding-top: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.venue-observations p {
-  background: rgba(219, 112, 147, 0.1);
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  color: #db7093;
-  font-size: 0.95rem;
-  font-style: italic;
-  margin: 0;
-  border: 1px solid rgba(219, 112, 147, 0.2);
 }
 
 /* Mobile responsiveness */

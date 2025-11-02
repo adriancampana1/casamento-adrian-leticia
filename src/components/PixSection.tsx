@@ -8,7 +8,6 @@ import weddingData from "../data/mockData";
 import "./PixSection.css";
 
 const PixSection = () => {
-  const [showQR, setShowQR] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const { pixInfo, messages } = weddingData;
 
@@ -77,39 +76,28 @@ const PixSection = () => {
                 </div>
               </div>
 
-              <div className="pix-actions">
-                <Button
-                  label={showQR ? "Ocultar QR Code" : "Mostrar QR Code"}
-                  icon={showQR ? "pi pi-eye-slash" : "pi pi-eye"}
-                  className="pix-qr-button"
-                  onClick={() => setShowQR(!showQR)}
-                />
-              </div>
-
-              {showQR && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="qr-container"
-                >
-                  <div className="qr-code">
-                    <QRCode
-                      value={pixInfo.qrCode}
-                      size={200}
-                      style={{
-                        height: "auto",
-                        maxWidth: "100%",
-                        width: "100%",
-                      }}
-                    />
-                  </div>
-                  <p className="qr-instruction">
-                    Escaneie com o app do seu banco
-                  </p>
-                </motion.div>
-              )}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="qr-container"
+              >
+                <div className="qr-code">
+                  <QRCode
+                    value={pixInfo.qrCode}
+                    size={200}
+                    style={{
+                      height: "auto",
+                      maxWidth: "100%",
+                      width: "100%",
+                    }}
+                  />
+                </div>
+                <p className="qr-instruction">
+                  Escaneie com o app do seu banco
+                </p>
+              </motion.div>
 
               <div className="pix-note">
                 <p>{messages.pix.note}</p>

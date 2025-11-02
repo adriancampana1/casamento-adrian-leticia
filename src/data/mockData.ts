@@ -12,7 +12,6 @@ export const weddingData = {
       "Rod. Celso Garcia Cid, 3177 - Salão - Palhano 1, Londrina - PR, 86057-350",
     date: "10 de janeiro de 2026",
     time: "16:30",
-    observations: "Por favor, cheguem com 30 minutos de antecedência",
   },
 
   giftStores: [
