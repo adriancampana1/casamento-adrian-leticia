@@ -1,5 +1,6 @@
 .about-section {
   padding: var(--space-3xl) 0;
+  padding-bottom: calc(var(--space-3xl) * 1.5);
   background: var(--gradient-background);
   position: relative;
   overflow-x: hidden;
@@ -227,6 +228,7 @@
 .about-date-info {
   display: flex;
   justify-content: center;
+  margin-bottom: var(--space-2xl);
 }
 
 .date-card {
@@ -314,6 +316,7 @@
 @media (max-width: 768px) {
   .about-section {
     padding: var(--space-2xl) 0;
+    padding-bottom: calc(var(--space-2xl) * 1.8);
   }
 
   .about-container {
@@ -396,11 +399,16 @@
   .story-text p {
     text-align: center;
   }
+
+  .about-date-info {
+    margin-bottom: var(--space-xl);
+  }
 }
 
 @media (max-width: 480px) {
   .about-section {
     padding: var(--space-xl) 0;
+    padding-bottom: calc(var(--space-xl) * 2);
   }
 
   .about-container {
@@ -452,6 +460,10 @@
 
   .about-couple {
     margin-bottom: var(--space-xl);
+  }
+
+  .about-date-info {
+    margin-bottom: var(--space-lg);
   }
 }
 
