@@ -9,6 +9,8 @@ html {
   /* Usar altura dinâmica do viewport no mobile */
   height: 100%;
   width: 100%;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
 }
 
 body {
@@ -25,6 +27,7 @@ body {
   padding: 0;
   /* Posicionamento relativo para contexto */
   position: relative;
+  box-sizing: border-box !important;
 }
 
 /* Container principal da aplicação */
@@ -69,9 +72,17 @@ body {
 }
 
 /* Correções para elementos que podem sair da tela */
-* {
+*,
+*::before,
+*::after {
   /* Garantir que box-shadows não causem overflow */
   box-sizing: border-box !important;
+}
+
+/* Prevenir que qualquer elemento cause overflow horizontal */
+* {
+  /* Limite máximo de largura */
+  max-width: 100vw;
 }
 
 /* Correções para elementos com position absolute */
@@ -125,11 +136,23 @@ body {
     /* Forçar largura máxima */
     max-width: 100vw !important;
     overflow-x: hidden !important;
+    width: 100% !important;
   }
 
-  /* Remover qualquer margem/padding que possa causar overflow */
+  /* Garantir que elementos não causem overflow */
   * {
-    max-width: 100% !important;
+    max-width: 100%;
+  }
+
+  /* Seções e containers principais */
+  section,
+  div[class*="section"],
+  div[class*="container"],
+  main,
+  article {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
   }
 
   /* Correção específica para elementos que podem causar a barra fúcsia */
@@ -183,6 +206,38 @@ body {
   select,
   textarea {
     font-size: 16px !important;
+  }
+
+  /* Garantir que todas as seções tenham overflow-x hidden */
+  section,
+  [class*="section"] {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* Garantir que containers e wrappers não excedam a viewport */
+  [class*="container"],
+  [class*="wrapper"],
+  [class*="content"] {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Prevenir que grids causem overflow */
+  [class*="grid"],
+  [style*="display: grid"],
+  [style*="display:grid"] {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Prevenir que flex containers causem overflow */
+  [class*="flex"],
+  [style*="display: flex"],
+  [style*="display:flex"] {
+    max-width: 100% !important;
+    flex-wrap: wrap;
   }
 }
 

@@ -10,21 +10,24 @@ interface Photo {
 
 const photos: Photo[] = [
   {
-    src: "/images/DSC01262.jpg",
+    src: "/images/DSC01262.webp",
     alt: "Pré-wedding - Momento romântico do casal",
   },
-  { src: "/images/DSC01442.jpg", alt: "Pré-wedding - Ensaio fotográfico" },
-  { src: "/images/DSC01448.jpg", alt: "Pré-wedding - Sorrisos e cumplicidade" },
-  { src: "/images/DSC01549.jpg", alt: "Pré-wedding - Amor em cada detalhe" },
-  { src: "/images/DSC01914.jpg", alt: "Pré-wedding - Momentos inesquecíveis" },
+  { src: "/images/DSC01442.webp", alt: "Pré-wedding - Ensaio fotográfico" },
   {
-    src: "/images/DSC01929.jpg",
+    src: "/images/DSC01448.webp",
+    alt: "Pré-wedding - Sorrisos e cumplicidade",
+  },
+  { src: "/images/DSC01549.webp", alt: "Pré-wedding - Amor em cada detalhe" },
+  { src: "/images/DSC01914.webp", alt: "Pré-wedding - Momentos inesquecíveis" },
+  {
+    src: "/images/DSC01929.webp",
     alt: "Pré-wedding - Felicidade compartilhada",
   },
-  { src: "/images/DSC01957.jpg", alt: "Pré-wedding - Juntos para sempre" },
-  { src: "/images/DSC02194.jpg", alt: "Pré-wedding - Conexão e amor" },
-  { src: "/images/DSC02293.jpg", alt: "Pré-wedding - Celebrando o amor" },
-  { src: "/images/DSC02340.jpg", alt: "Pré-wedding - Nossa história" },
+  { src: "/images/DSC01957.webp", alt: "Pré-wedding - Juntos para sempre" },
+  { src: "/images/DSC02194.webp", alt: "Pré-wedding - Conexão e amor" },
+  { src: "/images/DSC02293.webp", alt: "Pré-wedding - Celebrando o amor" },
+  { src: "/images/DSC02340.webp", alt: "Pré-wedding - Nossa história" },
 ];
 
 const PhotoGallery = () => {

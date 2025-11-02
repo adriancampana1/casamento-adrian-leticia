@@ -9,11 +9,13 @@
   justify-content: center;
   position: relative;
   background: var(--gradient-hero);
-  overflow: hidden;
-  padding: var(--space-3xl) var(--space-md);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: var(--space-3xl) 0;
   padding-top: calc(80px + var(--space-3xl)); /* Account for fixed header */
   max-width: 100vw;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-background {
@@ -32,7 +34,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/images/DSC01442.jpg");
+  background-image: url("/images/DSC01442.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +70,7 @@
 
 .floating-element-1 {
   top: 15%;
-  right: 10%;
+  right: -50px;
   width: 300px;
   height: 300px;
   background: radial-gradient(
@@ -79,11 +81,12 @@
     transparent 100%
   );
   box-shadow: inset 0 0 60px rgba(217, 70, 239, 0.1);
+  max-width: 50vw;
 }
 
 .floating-element-2 {
   bottom: 20%;
-  left: 5%;
+  left: -30px;
   width: 200px;
   height: 200px;
   background: radial-gradient(
@@ -94,14 +97,17 @@
     transparent 100%
   );
   box-shadow: inset 0 0 40px rgba(232, 121, 249, 0.08);
+  max-width: 50vw;
 }
 
 .hero-content {
   text-align: center;
   max-width: 900px;
-  padding: 0 2rem;
+  width: 100%;
+  padding: 0 clamp(1rem, 5vw, 2rem);
   z-index: 3;
   position: relative;
+  box-sizing: border-box;
 }
 
 .hero-date-badge {
@@ -263,8 +269,9 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-section {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-xl) 0;
     padding-top: calc(100px + var(--space-xl));
+    overflow-x: hidden;
   }
 
   .hero-background::before {
@@ -272,7 +279,8 @@
   }
 
   .hero-content {
-    padding: 0 var(--space-md);
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
+    max-width: 100%;
   }
 
   .hero-date-badge {
@@ -311,21 +319,24 @@
     width: 200px;
     height: 200px;
     top: 10%;
-    right: 5%;
+    right: -60px;
+    max-width: 40vw;
   }
 
   .floating-element-2 {
     width: 150px;
     height: 150px;
     bottom: 15%;
-    left: 2%;
+    left: -40px;
+    max-width: 35vw;
   }
 }
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: var(--space-lg) var(--space-sm);
+    padding: var(--space-lg) 0;
     padding-top: calc(100px + var(--space-lg));
+    overflow-x: hidden;
   }
 
   .hero-background::before {
@@ -352,10 +363,12 @@
   .floating-element-1 {
     width: 150px;
     height: 150px;
+    max-width: 35vw;
   }
 
   .floating-element-2 {
     width: 120px;
     height: 120px;
+    max-width: 30vw;
   }
 }
