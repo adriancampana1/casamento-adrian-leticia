@@ -1,4 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
+/* 
+ * Fontes carregadas de forma assíncrona via HTML para melhor performance
+ * Removido @import blocking do CSS
+ */
+
+/* Font face declarations com display swap para performance */
+@font-face {
+  font-family: 'Inter-fallback';
+  font-style: normal;
+  font-weight: 400 600;
+  src: local('Arial');
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+  size-adjust: 107%;
+}
+
+@font-face {
+  font-family: 'Playfair-fallback';
+  font-style: normal;
+  font-weight: 400 600;
+  src: local('Georgia');
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+  size-adjust: 100%;
+}
 
 :root {
   /* Wedding Color Palette - White with Fuchsia Accents */
@@ -72,11 +98,11 @@
   --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Typography */
-  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  /* Typography com fallbacks otimizados */
+  --font-family: "Inter", "Inter-fallback", -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
-  --font-serif: "Playfair Display", "Georgia", "Times New Roman", serif;
+  --font-serif: "Playfair Display", "Playfair-fallback", "Georgia", "Times New Roman", serif;
   --font-script: "Dancing Script", cursive;
 
   /* Modern spacing system */
