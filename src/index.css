@@ -1,14 +1,14 @@
-/* 
+/*
  * Fontes carregadas de forma assíncrona via HTML para melhor performance
  * Removido @import blocking do CSS
  */
 
 /* Font face declarations com display swap para performance */
 @font-face {
-  font-family: 'Inter-fallback';
+  font-family: "Inter-fallback";
   font-style: normal;
   font-weight: 400 600;
-  src: local('Arial');
+  src: local("Arial");
   ascent-override: 90%;
   descent-override: 22%;
   line-gap-override: 0%;
@@ -16,10 +16,10 @@
 }
 
 @font-face {
-  font-family: 'Playfair-fallback';
+  font-family: "Playfair-fallback";
   font-style: normal;
   font-weight: 400 600;
-  src: local('Georgia');
+  src: local("Georgia");
   ascent-override: 95%;
   descent-override: 25%;
   line-gap-override: 0%;
@@ -99,10 +99,11 @@
   --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   /* Typography com fallbacks otimizados */
-  --font-family: "Inter", "Inter-fallback", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
-  --font-serif: "Playfair Display", "Playfair-fallback", "Georgia", "Times New Roman", serif;
+  --font-family: "Inter", "Inter-fallback", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-serif: "Playfair Display", "Playfair-fallback", "Georgia",
+    "Times New Roman", serif;
   --font-script: "Dancing Script", cursive;
 
   /* Modern spacing system */

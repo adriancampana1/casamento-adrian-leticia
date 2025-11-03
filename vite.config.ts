@@ -30,8 +30,8 @@ export default defineConfig({
         },
         // Otimizar nomes de arquivos para melhor cache
         assetFileNames: (assetInfo) => {
-          if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
-          const info = assetInfo.name.split('.');
+          if (!assetInfo.name) return "assets/[name]-[hash][extname]";
+          const info = assetInfo.name.split(".");
           const ext = info[info.length - 1];
           if (/\.(css)$/.test(assetInfo.name)) {
             return `assets/css/[name]-[hash].${ext}`;

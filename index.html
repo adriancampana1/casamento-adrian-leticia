@@ -31,7 +31,7 @@
 
     <!-- Meta tags para performance -->
     <meta name="theme-color" content="#ff69b4" />
-    
+
     <!-- Critical CSS inline para melhor LCP e FCP -->
     <style>
       /* Reset e fontes de sistema como fallback imediato */
@@ -40,14 +40,14 @@
         padding: 0;
         box-sizing: border-box;
       }
-      
+
       html {
         scroll-behavior: smooth;
         overflow-x: hidden;
       }
-      
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
           "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
           "Helvetica Neue", sans-serif;
         line-height: 1.6;
@@ -57,22 +57,31 @@
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
       }
-      
+
       /* Evitar layout shift no hero */
       #root {
         min-height: 100vh;
       }
-      
+
       /* Loading skeleton para melhor UX */
       .loading-skeleton {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
         background-size: 200% 100%;
         animation: loading 1.5s infinite;
       }
-      
+
       @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
       }
     </style>
   </head>
