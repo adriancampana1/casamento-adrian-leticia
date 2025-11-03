@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import weddingData from "../data/mockData";
 import CountdownTimer from "./CountdownTimer";
@@ -33,82 +32,30 @@ const Hero = () => {
           }}
         />
         <div className="hero-overlay"></div>
-        {/* Elementos flutuantes otimizados - apenas transform/opacity */}
-        <motion.div
-          className="floating-element floating-element-1"
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="floating-element floating-element-2"
-          animate={{
-            y: [0, 15, 0],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
+        {/* Elementos flutuantes com animação CSS suave */}
+        <div className="floating-element floating-element-1" />
+        <div className="floating-element floating-element-2" />
       </div>
 
       <div className="hero-content">
-        <motion.div
-          className="hero-text"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <motion.div
-            className="hero-date-badge"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-          >
+        <div className="hero-text">
+          <div className="hero-date-badge">
             {couple.weddingDate}
-          </motion.div>
+          </div>
 
-          <motion.h1
-            className="hero-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
+          <h1 className="hero-title">
             {couple.bride} & {couple.groom}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="hero-subtitle"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.7 }}
-          >
+          <p className="hero-subtitle">
             {messages.hero.subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="hero-countdown"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.9 }}
-          >
+          <div className="hero-countdown">
             <CountdownTimer targetDate={couple.weddingDateTime} />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="hero-actions"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 1.1 }}
-          >
+          <div className="hero-actions">
             <Button
               label="Ver Local e Horário"
               icon="pi pi-map-marker"
@@ -121,8 +68,8 @@ const Hero = () => {
               className="hero-button secondary"
               onClick={scrollToGifts}
             />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

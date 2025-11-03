@@ -1,38 +1,19 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import weddingData from "../data/mockData";
 import "./AboutSection.css";
 
 const AboutSection = () => {
   const { couple } = weddingData;
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section id="about" className="about-section" ref={ref}>
+    <section id="about" className="about-section">
       <div className="about-container">
-        <motion.div
-          className="about-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.div
-            className="about-header"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
+        <div className="about-content">
+          <div className="about-header">
             <h2 className="about-title">Nossa História</h2>
             <div className="about-subtitle">Bem-vindos ao nosso grande dia</div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="about-story"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
+          <div className="about-story">
             <div className="story-text">
               <p>
                 É com muita alegria que convidamos você para celebrar conosco o
@@ -47,14 +28,9 @@ const AboutSection = () => {
                 e marcante.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="about-couple"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-          >
+          <div className="about-couple">
             <div className="couple-names">
               <div className="couple-name bride">
                 <div className="name-initial">{couple.bride.charAt(0)}</div>
@@ -72,20 +48,15 @@ const AboutSection = () => {
                 <div className="name-text">{couple.groom}</div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="about-date-info"
-            initial={{ opacity: 0, y: 15 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-          >
+          <div className="about-date-info">
             <div className="date-card">
               <div className="date-label">Celebraremos em</div>
               <div className="date-value">{couple.weddingDate}</div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
