@@ -58,9 +58,9 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
     <div className="countdown-container">
       <motion.h3
         className="countdown-title"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
       >
         Faltam apenas
       </motion.h3>
@@ -70,24 +70,16 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           <motion.div
             key={unit.key}
             className="countdown-unit"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.6,
-              delay: 1 + index * 0.1,
-              type: "spring",
-              stiffness: 120,
+              duration: 0.3,
+              delay: index * 0.05,
             }}
           >
-            <motion.div
-              className="countdown-number"
-              key={unit.value}
-              initial={{ scale: 1.1 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.2 }}
-            >
+            <div className="countdown-number">
               {unit.value.toString().padStart(2, "0")}
-            </motion.div>
+            </div>
             <div className="countdown-label">{unit.label}</div>
           </motion.div>
         ))}
@@ -95,9 +87,9 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
 
       <motion.p
         className="countdown-subtitle"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.6 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
       >
         para o nosso grande dia!
       </motion.p>

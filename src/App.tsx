@@ -1,29 +1,35 @@
-import { motion } from "framer-motion";
+import { lazy, Suspense } from "react";
 import "./App.css";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
-import PhotoGallery from "./components/PhotoGallery";
-import LocationSection from "./components/LocationSection";
-import GiftList from "./components/GiftList";
-import PixSection from "./components/PixSection";
-import Footer from "./components/Footer";
+
+const PhotoGallery = lazy(() => import("./components/PhotoGallery"));
+const LocationSection = lazy(() => import("./components/LocationSection"));
+const GiftList = lazy(() => import("./components/GiftList"));
+const PixSection = lazy(() => import("./components/PixSection"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
-    <motion.div
-      className="app"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="app">
       <Hero />
       <AboutSection />
-      <LocationSection />
-      <PhotoGallery />
-      <GiftList />
-      <PixSection />
-      <Footer />
-    </motion.div>
+      <Suspense fallback={<div style={{ minHeight: "50vh" }} />}>
+        <LocationSection />
+      </Suspense>
+      <Suspense fallback={<div style={{ minHeight: "50vh" }} />}>
+        <PhotoGallery />
+      </Suspense>
+      <Suspense fallback={<div style={{ minHeight: "50vh" }} />}>
+        <GiftList />
+      </Suspense>
+      <Suspense fallback={<div style={{ minHeight: "50vh" }} />}>
+        <PixSection />
+      </Suspense>
+      <Suspense fallback={<div style={{ minHeight: "20vh" }} />}>
+        <Footer />
+      </Suspense>
+    </div>
   );
 }
 

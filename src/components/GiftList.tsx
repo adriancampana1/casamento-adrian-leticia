@@ -7,24 +7,14 @@ import "./GiftList.css";
 const GiftList = () => {
   const { giftStores, messages } = weddingData;
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <section id="gifts" className="gifts-section">
       <div className="gifts-container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="gifts-header"
         >
           <h2 className="gifts-title">{messages.gifts.title}</h2>
@@ -35,12 +25,11 @@ const GiftList = () => {
           {giftStores.map((store, index) => (
             <motion.div
               key={store.name}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -10 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
             >
               <Card className="gift-card">
                 <div className="gift-card-content">
@@ -69,10 +58,10 @@ const GiftList = () => {
 
         <motion.div
           className="gifts-note"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           <p>{messages.gifts.note}</p>
         </motion.div>

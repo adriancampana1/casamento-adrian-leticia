@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import weddingData from "../data/mockData";
 import CountdownTimer from "./CountdownTimer";
+import { buildCloudinaryBackgroundUrl } from "../utils/cloudinary";
 import "./Hero.css";
 
 const Hero = () => {
@@ -15,19 +16,32 @@ const Hero = () => {
     document.getElementById("gifts")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // URL otimizada do Cloudinary para a imagem de fundo
+  const backgroundImageUrl = buildCloudinaryBackgroundUrl(
+    "DSC01442.webp",
+    1920
+  );
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-background">
+        {/* Imagem de fundo otimizada do Cloudinary */}
+        <div
+          className="hero-background-image"
+          style={{
+            backgroundImage: `url(${backgroundImageUrl})`,
+          }}
+        />
         <div className="hero-overlay"></div>
+        {/* Elementos flutuantes otimizados - apenas transform/opacity */}
         <motion.div
           className="floating-element floating-element-1"
           animate={{
-            y: [0, -30, 0],
-            rotate: [0, 5, -5, 0],
-            opacity: [0.3, 0.6, 0.3],
+            y: [0, -20, 0],
+            opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -35,15 +49,13 @@ const Hero = () => {
         <motion.div
           className="floating-element floating-element-2"
           animate={{
-            y: [0, 25, 0],
-            rotate: [0, -3, 3, 0],
-            opacity: [0.2, 0.5, 0.2],
+            y: [0, 15, 0],
+            opacity: [0.2, 0.4, 0.2],
           }}
           transition={{
-            duration: 10,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2,
           }}
         />
       </div>
@@ -51,51 +63,51 @@ const Hero = () => {
       <div className="hero-content">
         <motion.div
           className="hero-text"
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <motion.div
             className="hero-date-badge"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
           >
             {couple.weddingDate}
           </motion.div>
 
           <motion.h1
             className="hero-title"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             {couple.bride} & {couple.groom}
           </motion.h1>
 
           <motion.p
             className="hero-subtitle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.7 }}
           >
             {messages.hero.subtitle}
           </motion.p>
 
           <motion.div
             className="hero-countdown"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.4, delay: 0.9 }}
           >
             <CountdownTimer targetDate={couple.weddingDateTime} />
           </motion.div>
 
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.6 }}
+            transition={{ duration: 0.4, delay: 1.1 }}
           >
             <Button
               label="Ver Local e Horário"

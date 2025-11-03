@@ -1,33 +1,25 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Dialog } from "primereact/dialog";
+import { buildCloudinaryUrl } from "../utils/cloudinary";
 import "./PhotoGallery.css";
 
 interface Photo {
-  src: string;
+  id: string;
   alt: string;
 }
 
 const photos: Photo[] = [
-  {
-    src: "/images/DSC01262.webp",
-    alt: "Pré-wedding - Momento romântico do casal",
-  },
-  { src: "/images/DSC01442.webp", alt: "Pré-wedding - Ensaio fotográfico" },
-  {
-    src: "/images/DSC01448.webp",
-    alt: "Pré-wedding - Sorrisos e cumplicidade",
-  },
-  { src: "/images/DSC01549.webp", alt: "Pré-wedding - Amor em cada detalhe" },
-  { src: "/images/DSC01914.webp", alt: "Pré-wedding - Momentos inesquecíveis" },
-  {
-    src: "/images/DSC01929.webp",
-    alt: "Pré-wedding - Felicidade compartilhada",
-  },
-  { src: "/images/DSC01957.webp", alt: "Pré-wedding - Juntos para sempre" },
-  { src: "/images/DSC02194.webp", alt: "Pré-wedding - Conexão e amor" },
-  { src: "/images/DSC02293.webp", alt: "Pré-wedding - Celebrando o amor" },
-  { src: "/images/DSC02340.webp", alt: "Pré-wedding - Nossa história" },
+  { id: "DSC01262.webp", alt: "Pré-wedding - Momento romântico do casal" },
+  { id: "DSC01442.webp", alt: "Pré-wedding - Ensaio fotográfico" },
+  { id: "DSC01448.webp", alt: "Pré-wedding - Sorrisos e cumplicidade" },
+  { id: "DSC01549.webp", alt: "Pré-wedding - Amor em cada detalhe" },
+  { id: "DSC01914.webp", alt: "Pré-wedding - Momentos inesquecíveis" },
+  { id: "DSC01929.webp", alt: "Pré-wedding - Felicidade compartilhada" },
+  { id: "DSC01957.webp", alt: "Pré-wedding - Juntos para sempre" },
+  { id: "DSC02194.webp", alt: "Pré-wedding - Conexão e amor" },
+  { id: "DSC02293.webp", alt: "Pré-wedding - Celebrando o amor" },
+  { id: "DSC02340.webp", alt: "Pré-wedding - Nossa história" },
 ];
 
 const PhotoGallery = () => {
@@ -40,18 +32,17 @@ const PhotoGallery = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.06,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
+      transition: { duration: 0.4 },
     },
   };
 
@@ -62,7 +53,7 @@ const PhotoGallery = () => {
           className="gallery-header"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className="gallery-title">Nosso Pré-Wedding</h2>
           <div className="gallery-subtitle">
@@ -76,30 +67,35 @@ const PhotoGallery = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {photos.map((photo, index) => (
-            <motion.div
-              key={index}
-              className="gallery-item"
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setSelectedPhoto(photo)}
-            >
-              <div className="gallery-image-wrapper">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading="lazy"
-                  className="gallery-image"
-                />
-                <div className="gallery-overlay">
-                  <div className="gallery-zoom-icon">
-                    <i className="pi pi-search-plus"></i>
+          {photos.map((photo) => {
+            const thumbnailUrl = buildCloudinaryUrl(photo.id, 400, "auto:low");
+
+            return (
+              <motion.div
+                key={photo.id}
+                className="gallery-item"
+                variants={itemVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setSelectedPhoto(photo)}
+              >
+                <div className="gallery-image-wrapper">
+                  <img
+                    src={thumbnailUrl}
+                    alt={photo.alt}
+                    loading="lazy"
+                    className="gallery-image"
+                    decoding="async"
+                  />
+                  <div className="gallery-overlay">
+                    <div className="gallery-zoom-icon">
+                      <i className="pi pi-search-plus"></i>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
 
@@ -115,9 +111,10 @@ const PhotoGallery = () => {
         {selectedPhoto && (
           <div className="gallery-lightbox">
             <img
-              src={selectedPhoto.src}
+              src={buildCloudinaryUrl(selectedPhoto.id, 1920, "auto:good")}
               alt={selectedPhoto.alt}
               className="gallery-lightbox-image"
+              loading="lazy"
             />
           </div>
         )}

@@ -13,20 +13,19 @@
   );
 }
 
-.location-section::before {
-  content: "";
+.location-background-image {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("/images/DSC02194.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.35;
   z-index: 0;
   pointer-events: none;
+  will-change: transform;
 }
 
 .location-section::after {

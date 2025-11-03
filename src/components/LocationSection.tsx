@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import weddingData from "../data/mockData";
+import { buildCloudinaryBackgroundUrl } from "../utils/cloudinary";
 import "./LocationSection.css";
 
 const LocationSection = () => {
@@ -21,8 +22,21 @@ const LocationSection = () => {
     window.open(wazeUrl, "_blank");
   };
 
+  // URL otimizada do Cloudinary para a imagem de fundo
+  const backgroundImageUrl = buildCloudinaryBackgroundUrl(
+    "DSC02194.webp",
+    1920
+  );
+
   return (
     <section id="location" className="location-section">
+      {/* Imagem de fundo otimizada do Cloudinary */}
+      <div
+        className="location-background-image"
+        style={{
+          backgroundImage: `url(${backgroundImageUrl})`,
+        }}
+      />
       <div className="location-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
