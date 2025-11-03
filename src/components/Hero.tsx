@@ -39,17 +39,13 @@ const Hero = () => {
 
       <div className="hero-content">
         <div className="hero-text">
-          <div className="hero-date-badge">
-            {couple.weddingDate}
-          </div>
+          <div className="hero-date-badge">{couple.weddingDate}</div>
 
           <h1 className="hero-title">
             {couple.bride} & {couple.groom}
           </h1>
 
-          <p className="hero-subtitle">
-            {messages.hero.subtitle}
-          </p>
+          <p className="hero-subtitle">{messages.hero.subtitle}</p>
 
           <div className="hero-countdown">
             <CountdownTimer targetDate={couple.weddingDateTime} />
