@@ -148,7 +148,10 @@ const PhotoGallery = () => {
 
             {hasImageError && !isImageLoading && (
               <div className="gallery-loading-error">
-                <i className="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                <i
+                  className="pi pi-exclamation-triangle"
+                  aria-hidden="true"
+                ></i>
                 <p>Não foi possível carregar a imagem. Tente novamente.</p>
               </div>
             )}
