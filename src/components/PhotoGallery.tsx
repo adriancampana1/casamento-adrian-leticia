@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Dialog } from "primereact/dialog";
+import { ProgressSpinner } from "primereact/progressspinner";
 import { buildCloudinaryUrl } from "../utils/cloudinary";
 import "./PhotoGallery.css";
 
@@ -26,6 +27,8 @@ const PhotoGallery = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [isImageLoading, setIsImageLoading] = useState(false);
+  const [hasImageError, setHasImageError] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,6 +47,20 @@ const PhotoGallery = () => {
       y: 0,
       transition: { duration: 0.4 },
     },
+  };
+
+  useEffect(() => {
+    if (selectedPhoto) {
+      setIsImageLoading(true);
+      setHasImageError(false);
+    } else {
+      setIsImageLoading(false);
+      setHasImageError(false);
+    }
+  }, [selectedPhoto]);
+
+  const handlePhotoClick = (photo: Photo) => {
+    setSelectedPhoto(photo);
   };
 
   return (
@@ -77,7 +94,7 @@ const PhotoGallery = () => {
                 variants={itemVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
                 transition={{ duration: 0.2 }}
-                onClick={() => setSelectedPhoto(photo)}
+                onClick={() => handlePhotoClick(photo)}
               >
                 <div className="gallery-image-wrapper">
                   <img
@@ -101,7 +118,11 @@ const PhotoGallery = () => {
 
       <Dialog
         visible={selectedPhoto !== null}
-        onHide={() => setSelectedPhoto(null)}
+        onHide={() => {
+          setSelectedPhoto(null);
+          setIsImageLoading(false);
+          setHasImageError(false);
+        }}
         className="gallery-dialog"
         dismissableMask
         closeOnEscape
@@ -109,12 +130,41 @@ const PhotoGallery = () => {
         contentClassName="gallery-dialog-content"
       >
         {selectedPhoto && (
-          <div className="gallery-lightbox">
+          <div
+            className="gallery-lightbox"
+            aria-busy={isImageLoading}
+            aria-live="polite"
+          >
+            {isImageLoading && (
+              <div className="gallery-loading">
+                <ProgressSpinner
+                  style={{ width: "72px", height: "72px" }}
+                  strokeWidth="3"
+                  animationDuration="1.25s"
+                />
+                <p className="gallery-loading-text">Carregando imagem...</p>
+              </div>
+            )}
+
+            {hasImageError && !isImageLoading && (
+              <div className="gallery-loading-error">
+                <i className="pi pi-exclamation-triangle" aria-hidden="true"></i>
+                <p>Não foi possível carregar a imagem. Tente novamente.</p>
+              </div>
+            )}
+
             <img
               src={buildCloudinaryUrl(selectedPhoto.id, 1920, "auto:good")}
               alt={selectedPhoto.alt}
-              className="gallery-lightbox-image"
+              className={`gallery-lightbox-image ${
+                isImageLoading || hasImageError ? "is-hidden" : "is-visible"
+              }`}
               loading="lazy"
+              onLoad={() => setIsImageLoading(false)}
+              onError={() => {
+                setIsImageLoading(false);
+                setHasImageError(true);
+              }}
             />
           </div>
         )}
