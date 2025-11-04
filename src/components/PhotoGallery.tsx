@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { buildCloudinaryUrl } from "../utils/cloudinary";
+import { buildCloudinaryUrl, buildCloudinaryThumbnail } from "../utils/cloudinary";
 import "./PhotoGallery.css";
 
 interface Photo {
@@ -85,13 +85,8 @@ const PhotoGallery = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {photos.map((photo) => {
-            // Thumbnails menores para mobile (300px) e normais para desktop (400px)
-            const isMobile = window.innerWidth <= 768;
-            const thumbnailUrl = buildCloudinaryUrl(
-              photo.id,
-              isMobile ? 300 : 400,
-              "auto:low"
-            );
+            // Usa função especializada para thumbnails com boa qualidade
+            const thumbnailUrl = buildCloudinaryThumbnail(photo.id, 500);
 
             return (
               <motion.div

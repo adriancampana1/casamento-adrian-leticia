@@ -86,6 +86,14 @@
   object-fit: cover;
   display: block;
   transition: transform var(--transition-slow);
+  /* Renderização suave e de alta qualidade */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Anti-aliasing para melhor qualidade visual */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .gallery-item:hover .gallery-image {

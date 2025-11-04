@@ -43,11 +43,19 @@ const getResponsiveWidth = (desktopWidth: number): number => {
 
 /**
  * Retorna qualidade baseada na conexão
+ * Para thumbnails e imagens principais, mantém qualidade razoável
  */
 const getAdaptiveQuality = (baseQuality: string): string => {
   if (isSlowConnection()) {
-    // Em conexões lentas, sempre usa qualidade baixa
-    return "auto:low";
+    // Em conexões lentas, reduz qualidade mas mantém aceitável
+    // Se for 'auto:good' ou 'auto:best', reduz para 'auto:good'
+    // Se for 'auto:low', mantém
+    if (baseQuality === 'auto:best') {
+      return 'auto:good';
+    }
+    if (baseQuality === 'auto:good') {
+      return 'auto:good'; // Mantém boa qualidade mesmo em 3G
+    }
   }
   return baseQuality;
 };
@@ -84,4 +92,23 @@ export const buildCloudinaryBackgroundUrl = (
   const responsiveWidth = getResponsiveWidth(width);
   // Usa qualidade baixa e adiciona blur para backgrounds
   return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto:low,w_${responsiveWidth},c_limit,e_blur:300/${folder}${publicId}`;
+};
+
+/**
+ * Gera URL otimizada especificamente para thumbnails de galeria
+ * Garante qualidade visual agradável mesmo em tamanhos menores
+ */
+export const buildCloudinaryThumbnail = (
+  publicId: string,
+  width: number = 500
+): string => {
+  const folder = CLOUDINARY_FOLDER ? `${CLOUDINARY_FOLDER}/` : "";
+  const isMobileDevice = isMobile();
+  
+  // Para thumbnails, sempre usa qualidade boa
+  // Mobile: tamanho menor mas qualidade mantida
+  const thumbnailWidth = isMobileDevice ? Math.min(width, 350) : width;
+  
+  // Usa sharpening para melhorar nitidez em thumbnails pequenos
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto:good,w_${thumbnailWidth},c_limit,e_sharpen:100/${folder}${publicId}`;
 };
