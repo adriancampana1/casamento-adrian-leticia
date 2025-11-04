@@ -2,7 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { buildCloudinaryUrl, buildCloudinaryThumbnail } from "../utils/cloudinary";
+import {
+  buildCloudinaryUrl,
+  buildCloudinaryThumbnail,
+} from "../utils/cloudinary";
 import "./PhotoGallery.css";
 
 interface Photo {

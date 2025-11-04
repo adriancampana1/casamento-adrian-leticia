@@ -50,11 +50,11 @@ const getAdaptiveQuality = (baseQuality: string): string => {
     // Em conexões lentas, reduz qualidade mas mantém aceitável
     // Se for 'auto:good' ou 'auto:best', reduz para 'auto:good'
     // Se for 'auto:low', mantém
-    if (baseQuality === 'auto:best') {
-      return 'auto:good';
+    if (baseQuality === "auto:best") {
+      return "auto:good";
     }
-    if (baseQuality === 'auto:good') {
-      return 'auto:good'; // Mantém boa qualidade mesmo em 3G
+    if (baseQuality === "auto:good") {
+      return "auto:good"; // Mantém boa qualidade mesmo em 3G
     }
   }
   return baseQuality;
@@ -104,11 +104,11 @@ export const buildCloudinaryThumbnail = (
 ): string => {
   const folder = CLOUDINARY_FOLDER ? `${CLOUDINARY_FOLDER}/` : "";
   const isMobileDevice = isMobile();
-  
+
   // Para thumbnails, sempre usa qualidade boa
   // Mobile: tamanho menor mas qualidade mantida
   const thumbnailWidth = isMobileDevice ? Math.min(width, 350) : width;
-  
+
   // Usa sharpening para melhorar nitidez em thumbnails pequenos
   return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto:good,w_${thumbnailWidth},c_limit,e_sharpen:100/${folder}${publicId}`;
 };
