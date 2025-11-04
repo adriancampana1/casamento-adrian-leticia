@@ -85,7 +85,13 @@ const PhotoGallery = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           {photos.map((photo) => {
-            const thumbnailUrl = buildCloudinaryUrl(photo.id, 400, "auto:low");
+            // Thumbnails menores para mobile (300px) e normais para desktop (400px)
+            const isMobile = window.innerWidth <= 768;
+            const thumbnailUrl = buildCloudinaryUrl(
+              photo.id,
+              isMobile ? 300 : 400,
+              "auto:low"
+            );
 
             return (
               <motion.div

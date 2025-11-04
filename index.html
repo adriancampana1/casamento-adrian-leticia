@@ -15,6 +15,22 @@
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
 
+    <!-- Preload da imagem hero crítica - otimizado para mobile e desktop -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dondoum4g/image/upload/f_auto,q_auto:low,w_800,c_limit,e_blur:300/DSC01442.webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://res.cloudinary.com/dondoum4g/image/upload/f_auto,q_auto:low,w_1920,c_limit,e_blur:300/DSC01442.webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+
     <!-- Carregamento assíncrono de fontes para evitar render blocking -->
     <link
       rel="stylesheet"
@@ -61,6 +77,25 @@
       /* Evitar layout shift no hero */
       #root {
         min-height: 100vh;
+      }
+
+      /* Otimizações críticas para mobile LCP */
+      @media (max-width: 768px) {
+        /* Reduzir tamanho de fontes para acelerar renderização */
+        html {
+          font-size: 14px;
+        }
+
+        /* Priorizar conteúdo above-the-fold */
+        .hero-section {
+          min-height: 100vh;
+          will-change: auto;
+        }
+
+        /* Evitar reflows desnecessários */
+        img {
+          content-visibility: auto;
+        }
       }
 
       /* Loading skeleton para melhor UX */
