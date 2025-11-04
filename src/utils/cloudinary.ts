@@ -6,7 +6,7 @@ export const CLOUDINARY_FOLDER = ""; // Imagens estão na raiz, não em pasta
  * Detecta se é dispositivo mobile
  */
 const isMobile = (): boolean => {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === "undefined") return false;
   return window.innerWidth <= 768;
 };
 
@@ -14,15 +14,15 @@ const isMobile = (): boolean => {
  * Detecta se a conexão é lenta (3G ou inferior)
  */
 const isSlowConnection = (): boolean => {
-  if (typeof navigator === 'undefined' || !('connection' in navigator)) {
+  if (typeof navigator === "undefined" || !("connection" in navigator)) {
     return false;
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const conn = (navigator as any).connection;
   if (!conn) return false;
-  
+
   // Detecta 2G, slow-2g, ou saveData ativado
-  const slowTypes = ['slow-2g', '2g', '3g'];
+  const slowTypes = ["slow-2g", "2g", "3g"];
   return slowTypes.includes(conn.effectiveType) || conn.saveData === true;
 };
 
@@ -47,7 +47,7 @@ const getResponsiveWidth = (desktopWidth: number): number => {
 const getAdaptiveQuality = (baseQuality: string): string => {
   if (isSlowConnection()) {
     // Em conexões lentas, sempre usa qualidade baixa
-    return 'auto:low';
+    return "auto:low";
   }
   return baseQuality;
 };
